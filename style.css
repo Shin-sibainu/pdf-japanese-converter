@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 30px 4%;
+  background-color: rgb(136, 194, 172);
+  align-items: center;
+}
+
+.title {
+  font-size: 23px;
+}
+
+nav {
+  margin: 0 0 0 auto;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.header-nav li {
+  font-size: 18px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 640px) {
+  /* 640px以下のときのcssデザイン */
+  .header-nav {
+    display: none;
+  }
+
+  #hamburger {
+    position: relative;
+    width: 30px;
+    height: 25px;
+  }
+
+  #hamburger span {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* humburger要素の最初に子要素を追加する。 */
+  #hamburger::before {
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    content: "";
+    position: absolute;
+    top: 0;
+  }
+
+  #hamburger::after {
+    background-color: #fff;
+    width: 70%;
+    height: 2px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+  }
+}
