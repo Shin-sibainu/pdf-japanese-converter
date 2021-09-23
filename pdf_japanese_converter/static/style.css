@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 25px 4%;
+  background-color: rgb(136, 194, 172);
+  align-items: center;
+}
+
+.title {
+  font-size: 23px;
+}
+
+nav {
+  margin: 0 0 0 auto;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.header-nav li {
+  font-size: 18px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.sp-nav {
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.sp-nav ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.sp-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+.sp-nav li span {
+  font-size: 15px;
+  color: #fff;
+  padding: 20px 0;
+  display: block;
+}
+
+.sp-nav li a {
+  display: block;
+  padding: 20px 0;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+/* ×印 */
+.sp-nav .close {
+  position: relative;
+  padding-left: 20px;
+}
+
+.sp-nav .close::before {
+  content: "";
+  position: absolute;
+  top: 49%;
+  left: 0;
+  height: 1px;
+  width: 16px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.sp-nav .close::after {
+  content: "";
+  position: absolute;
+  top: 49%;
+  left: 0;
+  height: 1px;
+  width: 16px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
+.toggle {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.pdf-card-box {
+  border: 1px solid black;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+.pdf-content-box {
+  padding: 10px 10px;
+}
+
+.pdf-drop-box {
+  border: 1px dotted;
+  margin-top: 12px;
+  height: 50vh;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.pdf-drop-box span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pdf-drop-box:hover {
+  background-color: rgb(192, 192, 192);
+}
+
+.convert-area {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.convert-button {
+  padding: 15px;
+  font-size: 21px;
+  border-radius: 5px;
+  background-color: rgb(145, 225, 228);
+  border: 1px solid rgb(129, 129, 129);
+  box-shadow: 1px 1px 1px 1px black;
+  transition: all 0.2s ease-in-out;
+}
+
+.convert-button:hover {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+@media screen and (max-width: 640px) {
+  /* 640px以下のときのcssデザイン */
+  .header-nav {
+    display: none;
+  }
+
+  #hamburger {
+    position: relative;
+    width: 30px;
+    height: 25px;
+  }
+
+  #hamburger span {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    display: block;
+    transform: translateY(-50%);
+  }
+
+  /* humburger要素の最初に子要素を追加する。 */
+  #hamburger::before {
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    content: "";
+    position: absolute;
+    top: 0;
+  }
+
+  #hamburger::after {
+    background-color: #fff;
+    width: 70%;
+    height: 2px;
+    content: "";
+    position: absolute;
+    bottom: 0;
+  }
+}
