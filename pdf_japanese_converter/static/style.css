@@ -152,7 +152,9 @@ ul {
   text-align: center;
 }
 
-.convert-button {
+.submit-button {
+  display: block;
+  margin: 20px auto 10px auto;
   padding: 15px;
   font-size: 21px;
   border-radius: 5px;
@@ -162,9 +164,14 @@ ul {
   transition: all 0.2s ease-in-out;
 }
 
-.convert-button:hover {
+.submit-button:hover {
   box-shadow: none;
   transform: translate(1px, 1px);
+}
+
+.pdf-input {
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 640px) {

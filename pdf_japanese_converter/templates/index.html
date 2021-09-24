@@ -44,11 +44,28 @@
             <h3><i class="fas fa-file-pdf"></i> PDF Japanese Converter</h3>
             <p>This site is that pdf japanese converter.</p>
             <p>Please drop your English pdf like studies etc...</p>
-            <div class="pdf-drop-box"><span>Drop English-pdf</span></div>
+            <!-- pdfドロップエリア -->
+            <form
+              action=" {% url 'pdfJapaneseConverter:convert'  %}"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              {% csrf_token %}
+              <div class="pdf-drop-box">
+                <input
+                  type="file"
+                  name="file"
+                  class="pdf-input"
+                  accept=".pdf"
+                />
+              </div>
+              <input
+                type="submit"
+                class="submit-button"
+                value="Convert and Download"
+              />
+            </form>
           </div>
-        </div>
-        <div class="convert-area">
-          <button class="convert-button">Download ja-pdf</button>
         </div>
       </div>
     </section>
