@@ -1,5 +1,7 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from pdfminer.high_level import extract_text
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -33,8 +35,13 @@ def translate_text(target_text):
 def PDFJapaneseConvert(request):
     # 翻訳するアルゴリズム
     # 必要なもの：pdfデータ（中身のテキストはライブラリで変換）。translate_textのmodule
-    fileInfo = request.FILES["file"]
-    data = {
-        "file": fileInfo,
-    }
-    return render(request, "example.html", data)
+    # fileInfo = request.FILES["pdf-file"]  # pdfの名前しか返らん。
+    # data = {
+    # "file": fileInfo,
+    # }
+
+    # testArea
+    if request.method == "POST" and request.FILES["pdf-file"]:
+        pdf_file = request.FILES["pdf-file"]
+        fs = FileSystemStorage()
+        return render(request, "example.html", {})

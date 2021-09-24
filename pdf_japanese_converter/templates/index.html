@@ -54,7 +54,7 @@
               <div class="pdf-drop-box">
                 <input
                   type="file"
-                  name="file"
+                  name="pdf-file"
                   class="pdf-input"
                   accept=".pdf"
                 />
@@ -66,6 +66,16 @@
               />
             </form>
           </div>
+        </div>
+        <div class="testArea">
+          <h2>Data display</h2>
+          {% if upload_file_url %}
+          <p>
+            アップロード時刻<a href="{{ upload_file_url }}"
+              >{{ upload_file_url }}</a
+            >
+          </p>
+          {% endif %}
         </div>
       </div>
     </section>
