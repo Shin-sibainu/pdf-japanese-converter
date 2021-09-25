@@ -52,12 +52,18 @@
             >
               {% csrf_token %}
               <div class="pdf-drop-box">
-                <input
-                  type="file"
-                  name="pdf-file"
-                  class="pdf-input"
-                  accept=".pdf"
-                />
+                <label>
+                  <div class="pdf-input-area">
+                    <span>Drop this here</span>
+                    <input
+                      type="file"
+                      name="pdf-file"
+                      class="pdf-input"
+                      accept=".pdf"
+                      style="display: none"
+                    />
+                  </div>
+                </label>
               </div>
               <input
                 type="submit"
@@ -67,6 +73,30 @@
             </form>
           </div>
         </div>
+      </div>
+      <!-- practice area -->
+      <h2>practice</h2>
+      <form
+        id="form"
+        class="form"
+        action="upload_file"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="text" class="form-control" readonly="" />
+          <label class="input-group-btn">
+            <span class="btn btn-success">
+              Choose File<input type="file" name="file" style="display: none" />
+            </span>
+          </label>
+        </div>
+      </form>
+
+      <div id="result-table" class="row result-table"></div>
+      <div id="loading-div" class="row" style="display: none">
+        <img src="{% static 'loader.gif' %}" class="center-block" />
       </div>
     </section>
 

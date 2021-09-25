@@ -7,16 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <div>{{pdf_text}}</div> -->
-    <div class="testArea">
-      <h2>Data display</h2>
-      {% if upload_pdfFile_url %}
-      <p>
-        アップロード時刻<a href="{{ upload_pdfFile_url }}"
-          >{{ upload_pdfFile_url }}</a
-        >
-      </p>
-      {% endif %}
-    </div>
+    <div class="testArea">{{req_file}}</div>
+    <div class="testArea">{{pdf_text}}</div>
   </body>
 </html>

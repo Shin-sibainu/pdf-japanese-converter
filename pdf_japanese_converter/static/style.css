@@ -169,14 +169,19 @@ ul {
   transform: translate(1px, 1px);
 }
 
-.pdf-input {
-  height: 100%;
-  width: 100%;
-}
-
 .testArea {
   margin-top: 30px;
   text-align: center;
+}
+
+.pdf-input-area {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.pdf-input-area span {
+  font-size: 20px;
 }
 
 @media screen and (max-width: 640px) {
