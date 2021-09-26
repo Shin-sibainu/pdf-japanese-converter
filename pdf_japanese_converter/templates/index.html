@@ -46,18 +46,21 @@
             <p>Please drop your English pdf like studies etc...</p>
             <!-- pdfドロップエリア -->
             <form
-              id="pdf-drop-formBox"
+              id="form"
+              class="form"
+              action="upload_file"
               method="post"
               enctype="multipart/form-data"
             >
               {% csrf_token %}
               <div class="pdf-drop-box">
+                <!-- <input type="text" class="form-control" readonly="" /> -->
                 <label>
                   <div class="pdf-input-area">
                     <span>Drop this here</span>
                     <input
                       type="file"
-                      name="pdf-file"
+                      name="file"
                       class="pdf-input"
                       accept=".pdf"
                       style="display: none"
@@ -65,17 +68,19 @@
                   </div>
                 </label>
               </div>
-              <input
-                type="submit"
-                class="submit-button"
-                value="Convert and Download"
-              />
+              <div class="result-area">
+                <div class="result-table"></div>
+                <div id="loading-div" class="row" style="display: none">
+                  <img src="{% static 'loader.gif' %}" class="center-block" />
+                </div>
+              </div>
+              <input type="submit" class="submit-button" value="Download" />
             </form>
           </div>
         </div>
       </div>
       <!-- practice area -->
-      <h2>practice</h2>
+      <!--       <h2>practice</h2>
       <form
         id="form"
         class="form"
@@ -92,12 +97,12 @@
             </span>
           </label>
         </div>
-      </form>
+      </form> 
 
       <div id="result-table" class="row result-table"></div>
       <div id="loading-div" class="row" style="display: none">
         <img src="{% static 'loader.gif' %}" class="center-block" />
-      </div>
+      </div>-->
     </section>
 
     <script

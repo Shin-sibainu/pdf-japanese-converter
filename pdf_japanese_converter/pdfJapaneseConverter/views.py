@@ -1,9 +1,10 @@
 from logging import error
 from django.http import response
 from django.http.response import Http404, HttpResponse, JsonResponse
-from django.shortcuts import render, resolve_url
+from django.shortcuts import render
 from pdfminer.high_level import extract_text
 from django.core.files.storage import FileSystemStorage
+from .converter import translate_text
 
 # Create your views here.
 
@@ -12,29 +13,25 @@ def HomeView(request):
     return render(request, "index.html", {})
 
 
-def translate_text(target_text):
-    """Translating Text."""
+def upload_file(request):
+    try:
+        req_file = request.FILES["file"]
+        fs = FileSystemStorage()
+        filename = fs.save(req_file.name, req_file)
+        upload_pdfFile_url = fs.url(filename)  # uploadしたpdfのurl
+        en_pdf_text = extract_text("./" + upload_pdfFile_url)
 
-    from google.cloud import translate
-
-    client = translate.TranslationServiceClient()
-    parent = client.location_path("beaming-edition-325211", "global")
-    text = target_text
-
-    response = client.translate_text(
-        parent=parent,
-        contents=[text],
-        mime_type="text/plain",
-        source_language_code="en-US",
-        target_language_code="ja",
-    )
-
-    # Display the translation for each input text provided
-    for translation in response.translations:
-        print("Translated text: {}".format(translation.translated_text))
+        ja_pdf_text = translate_text(en_pdf_text)
+        params = {
+            "en_pdf_text": en_pdf_text,
+            "ja_pdf_text": ja_pdf_text
+        }
+        return HttpResponse(render(request, "example.html", params))
+    except:
+        raise Http404("messages")
 
 
-def PDFJapaneseConvert(request):
+""" def PDFJapaneseConvert(request):
     # 翻訳するアルゴリズム
     # 必要なもの：pdfデータ（中身のテキストはライブラリで変換）。translate_textのmodule
     if request.method == "POST" and request.FILES["pdf-file"]:
@@ -45,19 +42,4 @@ def PDFJapaneseConvert(request):
         pdf_data = {
             "upload_pdfFile_url": upload_pdfFile_url
         }
-        return JsonResponse(pdf_data)
-
-
-def upload_file(request):
-    try:
-        req_file = request.FILES["file"]
-        fs = FileSystemStorage()
-        filename = fs.save(req_file.name, req_file)
-        upload_pdfFile_url = fs.url(filename)  # uploadしたpdfのurl
-        pdf_text = extract_text("./" + upload_pdfFile_url)
-        params = {
-            "pdf_text": pdf_text
-        }
-        return HttpResponse(render(request, "example.html", params))
-    except:
-        return Http404("messages")
+        return JsonResponse(pdf_data) """

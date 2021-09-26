@@ -184,6 +184,11 @@ ul {
   font-size: 20px;
 }
 
+.result-area {
+  margin-top: 20px;
+  text-align: center;
+}
+
 @media screen and (max-width: 640px) {
   /* 640px以下のときのcssデザイン */
   .header-nav {

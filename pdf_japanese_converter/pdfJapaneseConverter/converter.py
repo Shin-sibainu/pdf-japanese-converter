@@ -1,9 +1,3 @@
-from pdfminer.high_level import extract_text
-from google.cloud import translate
-
-pdf_text = extract_text("./pdf/test.pdf")
-
-
 def translate_text(target_text):
     """Translating Text."""
 
@@ -24,6 +18,6 @@ def translate_text(target_text):
     # Display the translation for each input text provided
     for translation in response.translations:
         print("Translated text: {}".format(translation.translated_text))
+        translate_text = translation.translated_text
 
-
-translate_text(pdf_text)
+    return translate_text

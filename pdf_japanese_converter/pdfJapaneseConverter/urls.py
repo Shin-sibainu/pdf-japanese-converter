@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import HomeView, PDFJapaneseConvert, upload_file
+from .views import HomeView, upload_file
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -8,7 +8,6 @@ app_name = 'pdfJapaneseConverter'
 
 urlpatterns = [
     path("", HomeView),
-    path("convert/", PDFJapaneseConvert, name='convert'),
     path("upload_file", upload_file, name="upload_file")
 ]
 
