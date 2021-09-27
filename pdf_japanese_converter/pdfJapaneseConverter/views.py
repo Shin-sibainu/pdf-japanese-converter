@@ -5,9 +5,11 @@ from django.shortcuts import render
 from pdfminer.high_level import extract_text
 from django.core.files.storage import FileSystemStorage
 import reportlab
+from reportlab.pdfbase import pdfmetrics
 from .converter import translate_text
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import cm
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 # Create your views here.
 
@@ -27,10 +29,13 @@ def upload_file(request):
         ja_pdf_text = translate_text(en_pdf_text)  # テキスト翻訳
 
         # pdf生成
-        c = canvas.Canvas("./pdfGenerate/sample.pdf") #日本語は■で出力されちゃうよ。
-        c.drawString(9 * cm, 22 * cm, ja_pdf_text)
-        c.showPage()
-        c.save()
+        pdf_instance = canvas.Canvas(
+            "./pdfGenerate/sample.pdf")  # 日本語は■で出力されちゃうよ。
+        pdfmetrics.registerFont(UnicodeCIDFont('HeiseiKakuGo-W5'))
+        pdf_instance.setFont('HeiseiKakuGo-W5', 12)
+        pdf_instance.drawString(1 * cm, 27 * cm, ja_pdf_text)
+        pdf_instance.showPage()
+        pdf_instance.save()
 
         params = {
             "en_pdf_text": en_pdf_text,

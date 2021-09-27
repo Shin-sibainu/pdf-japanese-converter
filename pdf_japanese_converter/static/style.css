@@ -154,7 +154,7 @@ ul {
 
 .submit-button {
   display: block;
-  margin: 20px auto 10px auto;
+  margin: 9px auto 10px auto;
   padding: 15px;
   font-size: 21px;
   border-radius: 5px;
@@ -189,6 +189,30 @@ ul {
   text-align: center;
 }
 
+.download-icon {
+  left: 50%;
+  top: 32%;
+  position: absolute;
+  text-align: center;
+  font-size: 70px;
+  transform: translate(-55%, -15%);
+}
+
+.pdf-input-area span {
+  margin-top: 26px;
+}
+
+@media screen and (max-width: 1280px) {
+  .pdf-card-box {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .pdf-card-box {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 640px) {
   /* 640px以下のときのcssデザイン */
   .header-nav {
@@ -228,5 +252,9 @@ ul {
     content: "";
     position: absolute;
     bottom: 0;
+  }
+
+  .pdf-card-box {
+    width: 100%;
   }
 }

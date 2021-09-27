@@ -57,7 +57,10 @@
                 <!-- <input type="text" class="form-control" readonly="" /> -->
                 <label>
                   <div class="pdf-input-area">
-                    <span>Drop this here</span>
+                    <div class="download-icon">
+                      <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <span>Drop english PDF</span>
                     <input
                       type="file"
                       name="file"
@@ -71,6 +74,7 @@
               <div class="result-area">
                 <div class="result-table"></div>
                 <div id="loading-div" class="row" style="display: none">
+                  <h2>Translating...</h2>
                   <img src="{% static 'loader.gif' %}" class="center-block" />
                 </div>
               </div>
